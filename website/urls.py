@@ -19,10 +19,9 @@ from blog.views import *
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
 	url(r'^$',index),
-	url(r'^py/(.*)$',py),#匹配中文
-	url(r'^debug/$',debug),
-	url(r'^ideal&reality/$',ideal_reality),
-	url(r'^essay/(.*)$',essay),
+	url(r'^article/(.*)$',article),#匹配中文
+	url(r'^debug/(.*)$',debug),
+	url(r'^word/(.*)$',word),
 ]
 
 handler404 = page_not_found

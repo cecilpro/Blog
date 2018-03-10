@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'CecilFont';
+    src : url('/static/CecilFont.ttf');
+}
+
 html {
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -175,23 +180,32 @@ code{
 	transition:0.8s;
 }
 
-#page ul{
-	list-style-type:none;
-	position:relative;
+#pagenum{
+	padding:0;
+	text-align:center;
+	margin-top: 80px;
 }
-#page>ul>li{
-	display:block;
-	margin:50px auto;
-	word-wrap:break-word;
+#pagenum li{
+	display:inline-block;
 }
-#page a{
+#pagenum a{
 	color: #24262e;
-	font-weight: bold;
-	transition:0.8s;
+	border: 1px solid #e1e2e3;
+	cursor: pointer;
+	padding: 8px 15px;
+	text-decoration: none;
+	outline: none;
+	display: block;
+	transition: 0.8s;
 }
-#page a:hover{
-	color:red;
+#pagenum a:hover{
+	border: 1px solid red;
 }
+#pagenum .selected a{
+	background: red;
+	color: #fff;
+}
+
 #top{
 	position:fixed;
 	bottom:180px;
@@ -287,10 +301,10 @@ footer ul{
 }
 
 #load-img{
-	z-index: 1000;
+    z-index: 1000;
     width: 80px;
     height: 80px;
-    background: #24262e;
+    background: transparent;
     position: fixed;
-	top:0px;
+    top:0px;
 }

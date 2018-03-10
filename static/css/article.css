@@ -16,3 +16,32 @@
 		border-width:30px 0 0 30px;
 	}
 }
+
+#article{
+	list-style-type:none;
+	position:relative;
+}
+#article>li{
+	display:block;
+	margin:50px auto;
+	word-wrap:break-word;
+}
+#article a{
+	color: #24262e;
+	font-weight: bold;
+	transition:0.8s;
+}
+#article a:hover{
+	color:red;
+	text-decoration: underline;
+}
+#article h4{
+	border-left: solid 8px red;
+	padding-left: 10px;
+}
+
+.wordbody{
+	font-family: 'CecilFont';
+	font-size: 22px;
+	font-weight: bold;
+}
