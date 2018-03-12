@@ -1,0 +1,20 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>随笔 - 随笔图片插入实现</title>
+    
+<link href="blog/css/article.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<ul style="list-style-type: none;padding: 0;">
+            <li class="page">
+                    <h2>随笔图片插入实现</h2>
+                    <h5>Posted&nbsp;@&nbsp;Sunday 7th of May 2017 12:10:24&nbsp;by&nbsp;vee</h5>
+                    <div class="in_div"><img class="in_img" src="http://img07.tooopen.com/images/20170314/tooopen_sy_201827185379.jpg"/></div></p>&#160;&#160;&#160;&#160;图片插入,无非就是.把自己特定的图片插入格式(我选择的插入格式是#img).</p>下面就差一个正则,来匹配该特定字符.</p></p>1.preg_match正则匹配#img,获得图片href.</p>2.preg_replace相同正则匹配,替换字符串为html&#160;img标签格式.</p>3.最后,给每张图片添加自定义样式.这样,就能很方便的,在编辑页面由特定格式输入图片href达到插如图片目的.同样其他的声音,视频(HTML5&#160;audio&#160;vedio),亦可通过这种方式插入.</p>img转化源代码:</p><pre class="in_code">function to_img($str){
+    $reg='/#img\((\S+)\)/';
+    preg_match($reg,$str,$href); #get href
+    return preg_replace($reg,&quot;&lt;img class=\&quot;in_img\&quot; src=\&quot;&quot;.
+    $href[1].&quot;\&quot;/&gt;&quot;,$str);
+}</pre>      
+            </li>
+</ul>
