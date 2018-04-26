@@ -1,0 +1,28 @@
+{% include 'head.html' %}
+	<div id='main'>
+		<div id='page'>
+		<link rel='stylesheet' href='/static/css/message.css' type='text/css'/>
+		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(4)"));</script>
+		<ul id='message'>
+				<form class='list-form' method='post'>
+					{% csrf_token %}
+					{% for f in form %}
+						{{ f.label_tag }}{{ f }}</br>
+					{% endfor %}
+					<input class='sub-message' value='留言' type='submit'>
+					<font color='red' size='1'>{{ form.errors }}</font>
+				</form>
+{% for message in message_list %}
+	<li>
+		<strong><a class='message-name' href='{{ message.siteurl }}' target='black'>{{ message.name }}</a>
+		<a class='message-email' href='mailto:{{ message.email }}'>email</a></strong>
+		<span class='message-date'>{{ message.timestamp|date:'Y-m-d' }}</span>
+		<span class='message-f'>#{{ forloop.revcounter }}</span>
+		<p>{{ message.body }}</p>
+	</li>
+{% endfor %}
+		</ul>
+		</div>
+	</div>
+
+{% include 'footer.html' %}

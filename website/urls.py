@@ -22,6 +22,7 @@ urlpatterns = [
 	url(r'^article/(.*)$',article),#匹配中文
 	url(r'^debug/(.*)$',debug),
 	url(r'^word/(.*)$',word),
+    url(r'^message/$',message),
 ]
 
 handler404 = page_not_found

@@ -15,7 +15,7 @@
 				<div class='tip' style='background: green;'>Debug</div>
 				<div class='right'>{{ debug.sol | safe }}</div>
 			</li>
-			<li class='time'>{{ debug.timestamp }}</li>
+			<li class='time'>{{ debug.timestamp|date:'Y-m-d' }}</li>
 		</ul>
 	</li>
 {% endfor %}

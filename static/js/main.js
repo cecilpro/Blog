@@ -1,5 +1,5 @@
 $(function(){
-	$(".wrap .index").on("click","li",function(){
+	$(".wrap .index").on("click",">li",function(){
 	
 		$(".selected").removeClass('selected');/*remove*/
 		
@@ -27,7 +27,7 @@ $(function(){
 });
 
 function getDonate(){
-	var str="<div id='lbody'><div id='byte-info'><div class='close-info'>×</div><img id='byte' src='/static/donate_me.png'/></div>";
+	var str="<div id='lbody'><div id='byte-info'><div class='close-info'>╳</div><img id='byte' src='/static/donate_me.png'/></div>";
 	$("body").after(str);	
 	$(".close-info").click(function(){
 		$("#lbody").remove();

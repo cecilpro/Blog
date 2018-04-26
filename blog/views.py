@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from blog.models import Article, Debug, Word
-from django.shortcuts import render_to_response
+from blog.models import Article, Debug, Word, Message
+from django.shortcuts import render_to_response, render
+from django.http import HttpResponse
+from blog.forms import MessageForm
 from blog.markdown.translater import getHTML
 # Create your views here.
 
@@ -80,3 +82,19 @@ def word(request,title=''):
 	for n in word_list:
 		n.body = getHTML(n.body)
 	return render_to_response('word.html',{'word_list' : word_list,'current' : current,'page' : range(1,page+1)})
+
+
+def message(request):
+    message_list = Message.objects.order_by('-timestamp')
+    form = MessageForm()
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():#验证数据是否合法
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            body = form.cleaned_data['body']
+            siteurl = form.cleaned_data['siteurl']
+            Message.objects.create(name=name,email=email,body=body,siteurl=siteurl)
+            form = MessageForm()
+    return render(request,'message.html',{'form': form,'message_list': message_list})
+

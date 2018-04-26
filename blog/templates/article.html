@@ -10,7 +10,7 @@
 		<div class='gopage'></div>
 		<div>
 			<h2 class='title'>{{ article.title }}</h2>
-			<h4>{{ article.timestamp }}</h4>
+			<h4>{{ article.timestamp|date:'Y-m-d' }}</h4>
 			<p>
 			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
 				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:222 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/article/{{ article.title }}')">[阅读全文]</a><!--文章缩写-->

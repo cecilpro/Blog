@@ -12,7 +12,6 @@ html {
 
 body {
 	color: #333;
-	font-family: "Viga", sans-serif;
 	font-size: 16px;	
 	font-weight: 400;
 	line-height: 1.8;
@@ -34,6 +33,7 @@ body {
 }
 
 a{
+	color: #24262e;
 	text-decoration: none;
 	outline: none;
 }
@@ -46,6 +46,10 @@ hr{
 	border: none;
 	border-top: 1px dashed #24262e;
 	margin:0;
+}
+
+h2{
+	font-weight: unset;
 }
 
 code{
@@ -75,7 +79,7 @@ code{
 	border:none;
 }
 
-.index li {
+.index>li {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
@@ -83,10 +87,10 @@ code{
 	position:relative;
 }
 
-.index li:hover {
+.index>li:hover {
 }
 
-.index li:hover > ul {
+.index>li:hover > ul {
 	left: auto;
 	opacity: 1;
 	height:auto;
@@ -120,7 +124,7 @@ code{
 	color: red;
 }
 
-.index ul {
+.index>ul {
 	left: -9999px;
 	margin: 0;
 	opacity: 0;
@@ -135,7 +139,7 @@ code{
 	z-index: 99;
 }
 
-.index ul a {
+.index>ul a {
 	background: #24292e;
 	color:rgba(255,255,255,0.75);
 	border: 1px solid #eee;
@@ -145,11 +149,11 @@ code{
 	position: relative;
 	width: 100px;
 }
-
-.index ul ul {
+/*
+.index>ul>ul {
 	margin: -54px 0 0 199px;
 }
-
+*/
 
 #main{
 	max-width:1000px;
@@ -178,6 +182,9 @@ code{
 	max-width:600px;
 	margin:0 auto;
 	transition:0.8s;
+	background: #fff;
+	box-shadow: 1px 1px 50px #eee;
+	padding: 50px;
 }
 
 #pagenum{
@@ -289,15 +296,20 @@ footer ul{
 }
 .close-info{
 	cursor: pointer;
-    position: absolute;
-    display: block;
-    right: 0px;
-    width: 20px;
-    height: 20px;
+	position: absolute;
+	display: block;
+	line-height: 50px;
+	right: 0px;
+	width: 50px;
+	height: 50px;
 	color: #fff;
-    font-weight: bold;
-    font-size: 2.5em;
+	font-weight: bold;
+	font-size: 2.5em;
 	text-shadow: 1px 1px 5px #fff;
+	transition: 0.6s;
+}
+.close-info:hover{
+	transform:rotate(90deg);
 }
 
 #load-img{

@@ -91,12 +91,12 @@ def getSong(sid):
 	return songs
 def Writer(qq='2797977995'):
 	print('start update!')
-	file = open('/home/tonky/Blog/static/api/list.new','w',encoding='utf-8')
+	file = open('/home/cecil/Blog/static/api/list.new','w',encoding='utf-8')
 	cache = str(getList(qq))
 	print('start write list file!')
 	file.write(cache)
 	file.close()
-	os.rename("/home/tonky/Blog/static/api/list.new","/home/tonky/Blog/static/api/list")
+	os.rename("/home/cecil/Blog/static/api/list.new","/home/cecil/Blog/static/api/list")
 	print('update success!')
 
 count = 0

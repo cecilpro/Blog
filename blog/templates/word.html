@@ -5,7 +5,7 @@
 <ul id='article'>
 {% for word in word_list %}
 	<li>
-		<h4>{{ word.timestamp }}</h4>
+		<h4>{{ word.timestamp|date:'Y-m-d' }}</h4>
 		<p class='wordbody'>{{ word.body|safe }}</p>
 	</li>
 {% endfor %}
