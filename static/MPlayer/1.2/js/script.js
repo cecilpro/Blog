@@ -57,7 +57,6 @@ window.onload=function(){
 
 	Next();//init audio
 
-
 var d = document.getElementById('drag_button');
 var m=document.getElementById('music');
 var a=document.getElementById('all');

@@ -61,10 +61,19 @@ def getSong(sid):
 	js = js['cdlist'][0]['songlist']
 	songs = []
 	for j in js:
-		song = {
-				"song":j['songname'],
-				"singer":j['singer'][0]['name'],
-		}
+		try:
+			song = {
+			    "song":j['songname'],
+			    "singer":j['singer'][0]['name'],
+			    "picurl":"https://y.gtimg.cn/music/photo_new/T002R300x300M000"+j['albummid']+'.jpg'
+		    }
+		except:
+			song = {
+			    "song":j['songname'],
+			    "singer":j['singer'][0]['name'],
+                "picurl":"http://thirdqq.qlogo.cn/g?b=sdk&k=4fBthUZ1e1AtlCDpYzhHqw&s=140"
+		    }
+
 		getUrl = lambda songmid,mid:'http://dl.stream.qqmusic.qq.com/C400'+songmid+'.m4a?vkey='+json.loads(getRes('https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?&jsonpCallback=MusicJsonCallback&cid=205361747&songmid='+mid+'&filename=C400'+songmid+'.m4a&guid=6908829875',headers))['data']['items'][0]['vkey']+'&guid=6908829875&fromtag=66'
 		global count
 		global cur

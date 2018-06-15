@@ -34,6 +34,7 @@ xmlhttp.onreadystatechange=function()
 if (xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 //$("#hidden").text(xmlhttp.responseText);
+//alert($(xmlhttp.responseText));
 $("#page").html($(xmlhttp.responseText).find("#page").html());
 $('#load-img').remove();
 $("html,body").animate({scrollTop:0},'slow');

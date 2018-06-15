@@ -1,4 +1,4 @@
-{% include 'head.html' %}
+{% include 'head.html' with title='随笔' %}
 	<div id='main'>
 		<div id='page'>
 		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(1)"));</script>
@@ -14,8 +14,10 @@
 			<p>
 			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
 				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:222 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/article/{{ article.title }}')">[阅读全文]</a><!--文章缩写-->
+				<script>$('title').html('随笔');</script>
 			{% else %}
 				{{ article.body | safe }}
+				<script>$('title').html('{{ article.title }}');</script>
 			{% endifnotequal %}
 			</p>
 		</div>

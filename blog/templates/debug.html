@@ -1,7 +1,7 @@
-{% include 'head.html' %}
+{% include 'head.html' with title='问题' %}
 	<div id='main'>
 		<div id='page'>
-		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(2)"));</script>
+		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(2)"));$('title').html('问题');</script>
 <ul>
 {% for debug in debug_list %}
 	<li>

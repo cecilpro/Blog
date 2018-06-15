@@ -4,7 +4,7 @@
 	border-color: #fff red;
 	position: absolute;
 	right:0;
-	box-shadow:-1px 1px 1px #24262e;
+	box-shadow:-1px 1px 0px #24262e;
 	animation:get 1s 1;
 }
 
