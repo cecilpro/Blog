@@ -8,32 +8,35 @@
 <script src="/static/js/main.js"></script>
 <script src="/static/js/ajax.js"></script>
 <script src="/static/js/song.js"></script>
+
+
+<link rel="stylesheet" href="/static/css/plyr.css">
+<script src="/static/js/plyr.js"></script>
+
 <title>{{ title }}</title>
 </head>
 <div>
 	<nav>
 		<div class="wrap">
 			<ul class="index">
-				<li><a href="/">首页</a></li>|
-				<li><a href="javascript:void(0);" onclick="getPage('/article')">随笔</a></li>|
-				<li><a href="javascript:void(0);" onclick="getPage('/debug')">问题</a></li>|
-				<li><a href="javascript:void(0);" onclick="getPage('/word')">拾光录</a></li>|
-				<li><a href="javascript:void(0);" onclick="getPage('/message')">留言板</a></li>
+				<li><a href="/">首页</a></li><li><a href="javascript:void(0);" onclick="getPage('/articles')">随笔</a></li><li><a href="javascript:void(0);" onclick="getPage('/debug')">问题</a></li><!--<li><a href="javascript:void(0);" onclick="getPage('/word')">拾光录</a></li>|--><li><a href="javascript:void(0);" onclick="getPage('/message')">留言板</a></li>
 				<!--<li><a href="javascript:void(0);" onclick="getPage('/static/syncmusic.html');">同步音乐</a></li>-->
 				<!--<li><a href="javascript:void(0);" onclick="getPage('/static/about.html')">关于我</a></li>-->
 				<div class='mplayer'>
-					<div class='ctrl'><img src='/static/paused.png'></div>
+					<div class='ctrl'>
+                        <canvas width='56' height='56'></canvas>
+                        <img src='/static/paused.png'>
+                    </div>
 					<div class='view'></div>
 					<div class='mtip'>
 						<ul class='mlists'></ul>
 						<ul class='mlist'></ul>
-						<audio id='py'></audio>
+						<audio id='py' data-plyr-config="{'enable': false}"></audio>
 					</div>
 				</div>
 			</ul>
 		</div>
 	</nav>
 	
-<a href='javascript:void(0);' id='top'>Top</a>
+<a href='javascript:void(0);' id='top'>T</a>
 </div>
-<script src="/static/js/canvas-nest.min.js"></script>

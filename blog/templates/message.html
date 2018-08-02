@@ -2,7 +2,7 @@
 	<div id='main'>
 		<div id='page'>
 		<link rel='stylesheet' href='/static/css/message.css' type='text/css'/>
-		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(4)"));$('title').html('留言板');</script>
+		<script>Init($(".wrap .index>li:eq(4)"));$('title').html('留言板');</script>
 		<ul id='message'>
 				<form class='list-form' method='post'>
 					{% csrf_token %}

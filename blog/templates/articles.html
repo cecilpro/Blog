@@ -1,0 +1,57 @@
+{% include 'head.html' with title='随笔' %}
+	<div id='main'>
+		<div id='page'>
+		<script>Init($(".wrap .index>li:eq(1)"));</script>
+		
+<ul id='articles'>
+{% for article in article_list %}
+	<li>
+        <a href="javascript:void(0);" onclick="getPage('/articles/{{ article.title }}')">
+        <div id='article-img' style='background-image:url({{ article.imgurl }})'></div>
+		</a>
+        <div id='article-tip'></div>
+        <div id='article'>
+			<h3 class='title'>{{ article.title }}</h3>
+			<div>posted by <strong>Cecil Deng</strong> on <strong>{{ article.timestamp|date:'Y-m-d' }}</strong></div>
+			<p>
+			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
+				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:10 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/articles/{{ article.title }}')">ReadMore</a><!--文章缩写-->
+				<script>$('title').html('随笔');</script>
+			{% else %}
+				{{ article.body | safe }}
+				<script>$('title').html('{{ article.title }}');</script>
+			{% endifnotequal %}
+			</p>
+		</div>
+	</li>
+{% endfor %}
+
+</ul>
+<ul id='pagenum'>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current 1 %}
+onclick="getPage('/articles/?page={{ current|add:'-1' }}')"
+{% endifnotequal %}
+
+><</a>
+
+</li>
+<li><span>{{ current }}</span> of <span>{{ pages }}</span></li>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current pages %}
+onclick="getPage('/articles/?page={{ current|add:'1' }}')"
+{% endifnotequal %}
+
+>></a>
+</li>
+</ul>
+
+		</div>
+	</div>
+
+{% include 'footer.html' %}
+</body>

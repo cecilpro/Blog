@@ -1,19 +1,17 @@
 {% include 'head.html' with title='随笔' %}
 	<div id='main'>
 		<div id='page'>
-		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(1)"));</script>
+		<script>Init($(".wrap .index>li:eq(1)"));</script>
 		
-<ul id='article'>
+<ul id='articles'>
 {% for article in article_list %}
-	<li>
-		<hr>
-		<div class='gopage'></div>
-		<div>
-			<h2 class='title'>{{ article.title }}</h2>
-			<h4>{{ article.timestamp|date:'Y-m-d' }}</h4>
+	<li style='padding:50px;height:auto;'>
+		<div id='article' style='width: 100%;position:inherit;height:auto;'>
+			<h3 class='title'>{{ article.title }}</h3>
+			<div>posted by <strong>Cecil Deng</strong> on <strong>{{ article.timestamp|date:'Y-m-d' }}</strong></div>
 			<p>
 			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
-				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:222 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/article/{{ article.title }}')">[阅读全文]</a><!--文章缩写-->
+				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:10 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/article/{{ article.title }}')">ReadMore</a><!--文章缩写-->
 				<script>$('title').html('随笔');</script>
 			{% else %}
 				{{ article.body | safe }}

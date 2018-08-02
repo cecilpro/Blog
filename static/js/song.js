@@ -13,7 +13,8 @@ $(function(){
 
 			var audio = $("#py")[0];
 			
-			mPlay(data,audio,listnum,songnum);
+            mInit(data,audio,listnum,songnum)
+			//mPlay(data,audio,listnum,songnum);
 
 			$(".mlists li").click(function(){
 				getList(data['lists'][$(this).index()]['songs']);
@@ -39,13 +40,15 @@ $(function(){
 			});
 
 			$('#py').bind('ended',function(){
-				$('.ctrl img').attr('src','/static/paused.png');
-				if(order==='list'){
+                $('.ctrl img').attr('src','/static/paused.png');
+                if(order==='list'){
 					listlength=data['lists'][listnum]['songs'].length;
 					songnum=(songnum+1)%listlength;
 					mPlay(data,audio,listnum,songnum)
 				}
 			});
+
+            window.setInterval("drawProgress()",1000);
         }
     });
 });
@@ -66,6 +69,13 @@ function getList(list){
 	$('.mlist').html(str);
 }
 
+function mInit(data,audio,listnum,songnum){
+    mPlay(data,audio,listnum,songnum);
+    audio.pause();
+	$('.ctrl img').attr('src','/static/paused.png');
+    $('.ctrl').css('animation-play-state','paused');
+}
+
 function mPlay(data,audio,listnum,songnum){
 	$('.ctrl').css({'background':'url('+data['lists'][listnum]['songs'][songnum]['picurl']+')','background-size':'100%'});	
 	audio.src=data['lists'][listnum]['songs'][songnum]['url'];
@@ -76,10 +86,26 @@ function mPlay(data,audio,listnum,songnum){
 	$('.playing').removeClass('playing');
 	$('.mlists>li:eq('+listnum+')').addClass('playing');
 	$('.mlist>li:eq('+songnum+')').addClass('playing');
+   
+    $('canvas')[0].getContext("2d").clearRect(0,0,$('canvas')[0].width,$('canvas')[0].height);
 }
+
 
 function getTime(src){
 	var audio = $('#py')[0];
 	audio.src = src;
 	return audio.duration
+}
+
+function drawProgress(){
+    var alpha = $('#py')[0].currentTime/$('#py')[0].duration;
+
+    var c=$('canvas')[0];
+    var ctx=c.getContext("2d");
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.arc(c.width/2,c.height/2,c.width/2,0.5*Math.PI,(2*alpha+0.5)*Math.PI);
+    ctx.stroke();
 }

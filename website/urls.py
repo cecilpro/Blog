@@ -18,11 +18,13 @@ from django.contrib import admin
 from blog.views import *
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
-	url(r'^$',index),
-	url(r'^article/(.*)$',article),#匹配中文
+	url(r'^$',index),  
+	url(r'^articles/$',articles),#列表
+	url(r'^articles/(.*)$',article),#匹配中文
 	url(r'^debug/(.*)$',debug),
 	url(r'^word/(.*)$',word),
     url(r'^message/$',message),
+    url(r'^cache/$',cache),
 ]
 
 handler404 = page_not_found

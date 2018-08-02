@@ -17,6 +17,9 @@ def permission_denied(request):
 
 
 
+def cache(request):
+	return render_to_response('index.cache')
+
 def index(request):
 	return render_to_response('index.html')
 
@@ -43,6 +46,22 @@ def article(request,title=''):
 	for n in article_list:
 		n.body = getHTML(n.body)
 	return render_to_response('article.html',{'article_list' : article_list,'current' : current,'page' : range(1,page+1)})
+
+def articles(request):
+	page = int(request.GET.get('page','1'))
+	print(page)
+	num = len(Article.objects.order_by('-timestamp'))
+	if num%5 != 0:
+		pages = num//5 + 1
+	else:
+		pages = num//5
+
+	article_list = Article.objects.order_by('-timestamp')[(page-1)*5:page*5]#按时间戳排序
+	current = page
+
+	for n in article_list:
+		n.body = getHTML(n.body)
+	return render_to_response('articles.html',{'article_list' : article_list,'current' : current,'pages' : pages})
 
 def debug(request,title=''):
 	page = 0

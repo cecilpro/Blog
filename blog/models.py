@@ -5,9 +5,11 @@ from django.utils import timezone
 # Create your models here.
 
 class Article(models.Model):
-    title = models.CharField(max_length = 150)
-    body = models.TextField()
+    title     = models.CharField(max_length = 150)
+    body      = models.TextField()
+    imgurl    = models.CharField(max_length = 150)
     timestamp = models.DateTimeField()
+
 
 class Debug(models.Model):
 	que = models.TextField()
